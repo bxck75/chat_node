@@ -13,7 +13,10 @@
     top: -7px;
     left: -3.5px;
 }
-
+#emoticons{
+    text-align: center;
+    margin:0 auto;
+}
 #audio {
     margin-right: 10px;
 }
