@@ -13,7 +13,7 @@ var utils = require('./lib/utils.js');
 var config = require('./config.json');
 var pack = require('./package.json');
 var path = require('path');
-const faker = require('faker/locale/nep')
+const faker = require('faker/locale/en_AU')
 
 const User = {
   name: faker.name.findName(),
@@ -89,7 +89,7 @@ chat.on('connection', function(conn) {
         un: null,
         role: 0
     };
-    
+    console.log(clients[conn.id].ip);
     for(i in bans) {
         if(bans[i][0] == clients[conn.id].ip) {
             if(Date.now() - bans[i][1] < bans[i][2]) {

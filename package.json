@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "chalk": "~1.0.0",
+    "cookie": "^0.3.1",
     "debug": "^3.1.0",
     "ejs": "~2.3.1",
     "express": "^4.16.3",
     "faker": "^4.1.0",
     "jquery-emoji-picker": "file:emoti/jquery-emoji-picker",
+    "koa-session": "^5.8.1",
     "readline": "0.0.7",
     "serve-favicon": "^2.5.0",
     "sockjs": "~0.3.15",
