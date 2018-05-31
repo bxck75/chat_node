@@ -70,7 +70,7 @@
                                         <h2>Messenger</h2>
                                     </div>
                                     <div class="col-xs-6">
-                                        <button id="options" class="btn btn-fab btn-fab-mini btn-primary pull-right">
+                                        <button id="options" class="btn btn-fab btn-fab-mini btn-primary pull-right" >
                                             <i id="icon-settings" class="mdi mdi-action-settings"></i>
                                         </button>
                                         <button id="audio" class="btn btn-fab btn-fab-mini btn-primary pull-right" style="display:none">
@@ -86,12 +86,19 @@
                                 </div>
 
                                 <p id="typing"><br></p>
+                                
                                 <hr>
-
+                                <div  class="row">
+                                    <center>
+                                        <div id="emoticons" class="col-xs-12 col-md-12">
+                                                ☀️ ☔️ ☁️ ❄️ ⛄️ ⚡️ 🌀 🌁 🌊 🐱 🐶 🐭 🐹 🐰 🐺 🐸 🐯 🐨 🐻 🐷 🐽 🐮 🐗 🐵 🐒 🐴 🐎 🐫 🐑 🐘 🐼 🐍 🐦 🐤 🐥 🐣 🐔 🐧 🐢 🐛 🐝 🐜 🐞 🐌 🐙 🐠 🐟 🐳 🐋 🐬 🐄 🐏 🐀 🐃 🐅 🐇 🐉 🐐 🐓 🐕 🐖 🐁 🐂 🐲 🐡 🐊 🐪 🐆 🐈 🐩 🐾 💐 🌸 🌷 🍀 🌹 🌻 🌺 🍁 🍃 🍂 🌿 🍄 🌵 🌴 🌲 🌳 🌰 🌱 🌼 🌾 🐚 🌐 🌞 🌝 🌚 🌑 🌒 🌓 🌔 🌕 🌖 🌗 🌘 🌜 🌛 🌔 🌍 🌎 🌏 🌋 🌌 ⛅️
+                                        </div>
+                                    </center>
+                                </div>
                                 <div class="row">
                                     <div class="col-lg-8 col-lg-offset-2">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span id="icon" class="mdi mdi-social-person"></span></span>
+                                            <span class="input-group-addon"><span  onclick="location.reload()" id="icon" class="mdi mdi-social-person"></span></span>
 
                                             <input id="message" type="text" data-emojiable="true" class="form-control" value="<%= username%>" placeholder="Choose an username" aria-describedby="basic-addon1" maxlength="768">
                                             
@@ -104,18 +111,6 @@
                             </div>
                         </div>
                     </div>
-                    <script type="text/javascript">
-                                   
-                        document.getElementById("message").value=(USERNAME);
-                   </script>
-                    <div  class="row">
-                        <center>
-                            <div id="emoticons" class="col-xs-10">
-                                    ☀️ ☔️ ☁️ ❄️ ⛄️ ⚡️ 🌀 🌁 🌊 🐱 🐶 🐭 🐹 🐰 🐺 🐸 🐯 🐨 🐻 🐷 🐽 🐮 🐗 🐵 🐒 🐴 🐎 🐫 🐑 🐘 🐼 🐍 🐦 🐤 🐥 🐣 🐔 🐧 🐢 🐛 🐝 🐜 🐞 🐌 🐙 🐠 🐟 🐳 🐋 🐬 🐄 🐏 🐀 🐃 🐅 🐇 🐉 🐐 🐓 🐕 🐖 🐁 🐂 🐲 🐡 🐊 🐪 🐆 🐈 🐩 🐾 💐 🌸 🌷 🍀 🌹 🌻 🌺 🍁 🍃 🍂 🌿 🍄 🌵 🌴 🌲 🌳 🌰 🌱 🌼 🌾 🐚 🌐 🌞 🌝 🌚 🌑 🌒 🌓 🌔 🌕 🌖 🌗 🌘 🌜 🌛 🌔 🌍 🌎 🌏 🌋 🌌 ⛅️
-                            </div>
-                        </center>
-                    </div>
-    
                     <div class="row">
                         <div class="col-xs-12">
                             <p class="text-left pull-left">Created by <a href="https://github.com/bxck75" target="_blank">Koob404</a></p>

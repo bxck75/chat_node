@@ -13,7 +13,7 @@ var utils = require('./lib/utils.js');
 var config = require('./config.json');
 var pack = require('./package.json');
 var path = require('path');
-const faker = require('faker/locale/en_AU')
+const faker = require('faker/locale/nep')
 
 const User = {
   name: faker.name.findName(),
@@ -63,7 +63,7 @@ app.locals.version = pack.version;
 /* Routes */
 app.use(config.url, express.static(path.join(__dirname, 'public')));
 app.get(config.url, function (req, res) {
-    res.render('index', {version:pack.version, username:User.name});
+    res.render('index', {version:pack.version, username:faker.name.findName().replace(/ /g,"_").substring(0, 16)});
 });
 
 
