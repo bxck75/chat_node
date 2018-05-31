@@ -13,13 +13,22 @@ var utils = require('./lib/utils.js');
 var config = require('./config.json');
 var pack = require('./package.json');
 var path = require('path');
+const faker = require('faker/locale/en_AU')
 
- 
+const User = {
+  name: faker.name.findName(),
+  email: faker.internet.email(),
+  website: faker.internet.url(),
+  address: faker.address.streetAddress() + faker.address.city() + faker.address.country(),
+  bio: faker.lorem.sentences(),
+  image: faker.image.avatar()
+}
+
 /* Config */
 var port = utils.normalizePort(process.env.PORT || config.port);
 var app = express();
 var server;
-
+ 
 
 /* Variables */
 var lastTime = [];
@@ -34,6 +43,7 @@ var bans = [];
 var uid = 1;
 
 var alphanumeric = /^\w+$/;
+
 
 if(config.readline.use) {
     var rl = readline.createInterface(process.stdin, process.stdout);
@@ -53,7 +63,7 @@ app.locals.version = pack.version;
 /* Routes */
 app.use(config.url, express.static(path.join(__dirname, 'public')));
 app.get(config.url, function (req, res) {
-    res.render('index', {version:pack.version});
+    res.render('index', {version:pack.version, username:User.name});
 });
 
 
