@@ -33,7 +33,11 @@
 </head>
 
 <body>
-
+    <script>
+        var VERSION="<%= version%>";
+        var USERNAME ="<%= username%>";
+        console.log(USERNAME);
+    </script>
     <div class="container-fluid main">
         <a target="_blank" href="https://github.com/bxck75/chat_node/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 
@@ -98,7 +102,11 @@
                                 <div class="row">
                                     <div class="col-lg-8 col-lg-offset-2">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span  onclick="location.reload()" id="icon" class="mdi mdi-social-person"></span></span>
+                                            <!-- <button id="options" onclick="location.reload()" class="btn btn-fab btn-fab-mini btn-primary pull-right" >
+                                                    <i id="icon-settings" class="mdi mdi-social-person"></i><img src="<%= image%>" height="55px" />
+                                                    <span  onclick="location.reload()" id="icon" class="mdi mdi-social-person"></span><img src="<%= image%>" height="55px" />
+                                            </button> -->
+                                            <button class="input-group-addon"><span  onclick="location.reload()" id="icon" class="mdi mdi-social-person"></span><img src="<%= image%>" height="55px" /></button>
 
                                             <input id="message" type="text" data-emojiable="true" class="form-control" value="<%= username%>" placeholder="Choose an username" aria-describedby="basic-addon1" maxlength="768">
                                             
@@ -246,11 +254,7 @@
             </div>
         </div>
     </div>
-    <script>
-        var VERSION="<%= version%>";
-        var USERNAME ="<%= username%>";
-        console.log(USERNAME);
-    </script>
+
 
 
     <script src="//lorenzoongithub.github.io/completely/complete.ly.1.0.1.min.js"></script>

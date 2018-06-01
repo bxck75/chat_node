@@ -157,7 +157,7 @@ var connect = function() {
 
                 case 'connection':
                     var userip = data.user.ip ? ' [' + data.user.ip + ']' : '';
-                    showChat('info', null, data.user.un + userip + ' connected to the server');
+                    showChat('info', null, data.user.image + " " + data.user.un + userip + ' connected to the server');
 
                     clients[data.user.id] = data.user;
                     document.getElementById('users').innerHTML = Object.keys(clients).length + ' USERS';
@@ -167,7 +167,7 @@ var connect = function() {
                     var userip = data.user.ip ? ' [' + data.user.ip + ']' : '';
 
                     if(data.user.un != null) {
-                        showChat('info', null, data.user.un + userip + ' disconnected from the server');
+                        showChat('info', null, data.user.image + " " + data.user.un + data.user.image + userip + ' disconnected from the server');
                     }
 
                     delete clients[data.user.id];
@@ -188,7 +188,7 @@ var connect = function() {
                     break;
             }
         } else if((data.type == 'kick' || data.type == 'ban') && data.extra == username) {
-            location.reload();
+            location.reload(true);
         } else {
             if(data.message.indexOf('@' + username) > -1) {
                 data.type = 'mention';

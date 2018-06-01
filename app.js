@@ -7,14 +7,24 @@ var sockjs = require('sockjs');
 var https = require('https');
 var chalk = require('chalk');
 var fs = require('fs');
+var serveIndex = require('serve-index');
 
 var log = require('./lib/log.js');
 var utils = require('./lib/utils.js');
 var config = require('./config.json');
 var pack = require('./package.json');
 var path = require('path');
-const faker = require('faker/locale/en_AU')
+get_random = function (list) {
+    return list[Math.floor((Math.random()*list.length))];
+  }
 
+// get_random = function rand(items) {
+//     return items[~~(items.length * Math.random())];
+// }
+//console.log(get_random(['nl','en_AU','de','nep','jp']));
+//random language fake details
+const faker = require('faker/locale/'+get_random(['nl','en_AU','de','nep']));
+const ff = require('node-find-folder');
 const User = {
   name: faker.name.findName(),
   email: faker.internet.email(),
@@ -24,7 +34,14 @@ const User = {
   image: faker.image.avatar()
 }
 
+console.log(faker.image.avatar());
+// ff_result = new ff('name');
+// ff_result = new ff('.', {
+//     nottraversal: ['node_modules']
+//   });
+//console.log(ff_result);
 /* Config */
+
 var port = utils.normalizePort(process.env.PORT || config.port);
 var app = express();
 var server;
@@ -59,16 +76,18 @@ app.set('view engine', 'ejs');
 app.use(favicon(path.join(__dirname,'public/img/favicon.png')));
 app.locals.version = pack.version;
 
-
+ 
 /* Routes */
 app.use(config.url, express.static(path.join(__dirname, 'public')));
 app.get(config.url, function (req, res) {
-    res.render('index', {version:pack.version, username:faker.name.findName().replace(/ /g,"_").substring(0, 16)});
+    prof_image = faker.image.avatar(),
+    res.render('index', {version:pack.version, username:faker.name.findName().replace(/ /g,"_").replace(".","").replace(".","").substring(0, 16), image:prof_image});
 });
 
 
 /* Logic */
 chat.on('connection', function(conn) {
+   
     log('socket', chalk.underline(conn.id) + ': connected (' + conn.headers['x-forwarded-for'] + ')');
     rateLimit[conn.id] = 1;
     lastTime[conn.id] = Date.now();
@@ -141,7 +160,7 @@ chat.on('connection', function(conn) {
                 }
 
                 if(data.type == 'update') {
-                    return updateUser(conn.id, data.user);
+                    return updateUser(conn.id, data.user,prof_image);
                 }
 
                 if(data.message.length > 768) {
@@ -172,7 +191,7 @@ chat.on('connection', function(conn) {
 
 
 /* Functions */
-function updateUser(id, name) {
+function updateUser(id, name, image) {
     if(name.length > 2 && name.length < 17 && name.indexOf(' ') < 0 && !utils.checkUser(clients, name) && name.match(alphanumeric) && name != 'Console' && name != 'System') {
         if(clients[id].un == null) {
             clients[id].con.write(JSON.stringify({type:'server', info:'success'}));
@@ -180,17 +199,20 @@ function updateUser(id, name) {
         }
 
         users[clients[id].id].un = name;
+        users[clients[id].id].image = image;
         utils.sendToAll(clients, {
             type: 'server',
             info: clients[id].un == null ? 'connection' : 'update',
             user: {
                 id: clients[id].id,
                 oldun: clients[id].un,
-                un: name,
+                un:name,
+                image: image,
                 role: clients[id].role
             }
         });
         clients[id].un = name;
+        clients[id].image = image;
     } else {
         var motive = 'format';
         var check = false;
